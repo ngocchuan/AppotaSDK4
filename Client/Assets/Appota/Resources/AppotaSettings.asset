@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b618b83d21f94b4a9a217775f7473af, type: 3}
+  m_Name: AppotaSettings
+  m_EditorClassIdentifier: 
+  facebookAppID: 789057937844518
+  facebookAppSecretID: 
+  twitterConsumerKey: z7C0vyxg4mIg5RQyoifEiQ
+  twitterConsumerSecret: h02yv8NfVgxzpc5ZgO8PoppGEibL4KB8tYPjivZzYQ
+  googleClientId: 381575391023-q1kemg9m0m4pacje3dq12dufr890hvdg.apps.googleusercontent.com
+  googleClientSecretId: 
+  inAppApiKey: K-A174260-U00000-E1ZSTS-A95DE87202F4C94B
+  paymentState: game_state
+  gameID: 
+  usingAppFlyer: 0
+  appleAppID: 
+  appFlyerKey: ARDuQcYYMeAiZycPmvoQxg
+  usingAdWords: 0
+  adWordsConversionID: 
+  adWordsLabel: 
+  adWordsValue: 
+  adWordsIsRepeatable: 0

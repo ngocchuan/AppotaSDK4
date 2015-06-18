@@ -1,0 +1,25 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Appota\AppotaSDKReceiver.cs">
+    <Files>
+      <File FileName="Assets\Scripts\MenuController.cs" Line="17" Column="12" />
+      <File FileName="Assets\Scripts\Controller\PanelCreatUser.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\URL\GetDataServer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Appota\AppotaSDKHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Appota\AppotaSDKReceiver.cs" Line="32" Column="31" />
+      <File FileName="Assets\Scripts\Setting.cs" Line="8" Column="39" />
+      <File FileName="Assets\Scripts\GUIController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="8" Column="28" />
+      <File FileName="Assets\Scripts\Controller\UserInfoController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controller\PanelServerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controller\SelectServerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Appota\Others\AppotaPaymentResult.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entities\GameUserInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entities\ServerInfo.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
