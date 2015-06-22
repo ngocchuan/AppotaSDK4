@@ -1,10 +1,10 @@
-#Tính hợp Appota SDK
+# Tính hợp Appota SDK #
 
-##1. Ký kết hợp đồng phân phối
+## 1. Ký kết hợp đồng phân phối ##
 
 Sau khi Nhà phát triển và Appota hoàn thành việc ký kết Hợp đồng phân phối ứng dụng, Nhà phát triển truy cập vào địa chỉ web https://developer.appota.com/.
 
-##2. Tạo ứng dụng
+## 2. Tạo ứng dụng ##
 
 - **Tạo ứng dụng**
 
@@ -73,4 +73,11 @@ Sau khi Nhà phát triển và Appota hoàn thành việc ký kết Hợp đồn
 		- SMS, Card, Bank, ... : giá trị tiền thực người dùng phải trả khi mua gói nạp.
 
 Sau khi hoàn thành khai báo các gói thanh toán nhấp GENERATE & SAVE để kết thúc khai báo ứng dụng mới có tích hợp thanh toán.
- 
+
+
+## 3. Tích hợp SDK ##
+
+Việc tích hợp SDK với 1 game MMO sẽ được chia thành 2 phía Clien và Server. Được làm như theo hướng dẫn sau.
+
+Client: [https://github.com/ngocchuan/AppotaSDK4/tree/master/Client](https://github.com/ngocchuan/AppotaSDK4/tree/master/Client)  
+Server: [https://github.com/ngocchuan/AppotaSDK4/tree/master/Server](https://github.com/ngocchuan/AppotaSDK4/tree/master/Server)
