@@ -30,24 +30,35 @@ public class MenuController : MonoBehaviour {
 	void InitAppota(){
 		#if UNITY_IPHONE
 		AppotaSDKHandler.Instance.Init();
-		AppotaSDKHandler.Instance.SetAutoShowLoginDialog(true);
+		AppotaSDKHandler.Instance.SetAutoShowLoginDialog(false);
 		#endif
 		
 		#if UNITY_ANDROID
 		AppotaSDKHandler.Instance.Init();
-		AppotaSDKHandler.Instance.SetAutoShowLoginDialog(true);
+		AppotaSDKHandler.Instance.SetAutoShowLoginDialog(false);
 		#endif
 	}
 	
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Escape)) 
 			Application.Quit(); 
-		// Get list server when login success
+
 		if (Setting.isLogin) {
 			Setting.isLogin = false;
 			dataServer.GetListServer ();
 		}
 	}
+    void OnGUI()
+    {
+
+        GUIStyle customButton = new GUIStyle("button");
+        customButton.fontSize = 30;
+
+        if (GUI.Button(new Rect(Screen.width / 3, Screen.height - 100, Screen.width / 3, Screen.height / 10), "Login", customButton))
+        {
+            AppotaSDKHandler.Instance.ShowLoginView();
+        }
+    }
 
 	void OnApplicationQuit(){
 		#if UNITY_ANDROID

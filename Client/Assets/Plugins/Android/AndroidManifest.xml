@@ -36,10 +36,10 @@
     <meta-data android:name="com.appota.apiKey" android:value="K-A174260-U00000-E1ZSTS-A95DE87202F4C94B" />
     <meta-data android:name="com.crashlytics.ApiKey" android:value="041977b270d261673d4bb3f97e261b2427c6f6f0" />
     <!-- user this for twitter login -->
-    <meta-data android:name="com.appota.twitter.consumer.key" android:value="z7C0vyxg4mIg5RQyoifEiQ" />
-    <meta-data android:name="com.appota.twitter.consumer.secret" android:value="h02yv8NfVgxzpc5ZgO8PoppGEibL4KB8tYPjivZzYQ" />
+    <meta-data android:name="com.appota.twitter.consumer.key" android:value="8JssO2TP6DPUvsMxIiuBA" />
+    <meta-data android:name="com.appota.twitter.consumer.secret" android:value="t20smaekjNGQONWvN63joVQQ3xZmoGmbnjeunFjI" />
     <!-- Set Facebook Application ID -->
-    <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="\ 789057937844518" />
+    <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="\ 435546253225772" />
     <meta-data android:name="com.onclan.gameId" android:value="" />
   </application>
 </manifest>

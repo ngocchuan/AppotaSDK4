@@ -7,6 +7,7 @@ public class AppotaSDKReceiver : MonoBehaviour {
 	private static bool initialized;
 
 	private static AppotaSDKReceiver _instance;
+	
 	// Singleton for SDK handler
 	public static AppotaSDKReceiver Instance
 	{
@@ -28,14 +29,14 @@ public class AppotaSDKReceiver : MonoBehaviour {
 			initialized = true;
 		}
 	}
-
+	
 	public void OnLoginSuccess(string appotaSession)
 	{
 		// Get User info from AppotaSession
-		Setting.appotaSessionObj = new AppotaSession(appotaSession);
-		AppotaSession.Instance.UpdateInstance(Setting.appotaSessionObj);
+        Setting.appotaSessionObj = new AppotaSession(appotaSession);
+        AppotaSession.Instance.UpdateInstance(Setting.appotaSessionObj);
 
-		Setting.isLogin = true;
+        Setting.isLogin = true;
 	}
 	
 	public void OnLoginError(string error)
@@ -54,10 +55,9 @@ public class AppotaSDKReceiver : MonoBehaviour {
 		AppotaPaymentResult paymentResult = new AppotaPaymentResult(transactionResult);
 
 		// Parse amount, packageID, in AppPaymentResult
-		Debug.Log ("AppotaSDK: Did payment");
-		Debug.Log("Appota: " + transactionResult);
-		// Get User info
-		Setting.reloadUserInfo = true;
+
+        // Get User info
+        Setting.reloadUserInfo = true;
 	}
 
 	public void OnPaymentFailed(string error)
@@ -73,7 +73,7 @@ public class AppotaSDKReceiver : MonoBehaviour {
 	public void GetPaymentState(string packageID)
 	{
 		Debug.Log ("AppotaSDK: PackageID: " + packageID);
-		string paymentState = Setting.currentServer.Server_id+":"+packageID;
+        string paymentState = Setting.currentServer.Server_id + ":" + packageID;
 
 		AppotaSDKHandler.Instance.SendStateToWrapper(paymentState);
 	}

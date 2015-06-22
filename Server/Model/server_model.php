@@ -9,12 +9,12 @@ function get_server_by_id($server_id){
         $result = array(
         'server_id' => $server_info[0],
         'server_name' => $server_info[1],
-        "error_code" => 0
+        "error_code" => "0"
         );
     }
     else {
         $result = array(
-            "error_code" => 1,
+            "error_code" => "1",
             "message" => 'Creat new user'
         );  
     }

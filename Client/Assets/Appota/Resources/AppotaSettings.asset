@@ -11,11 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b618b83d21f94b4a9a217775f7473af, type: 3}
   m_Name: AppotaSettings
   m_EditorClassIdentifier: 
-  facebookAppID: 789057937844518
+  facebookAppID: 435546253225772
   facebookAppSecretID: 
-  twitterConsumerKey: z7C0vyxg4mIg5RQyoifEiQ
-  twitterConsumerSecret: h02yv8NfVgxzpc5ZgO8PoppGEibL4KB8tYPjivZzYQ
-  googleClientId: 381575391023-q1kemg9m0m4pacje3dq12dufr890hvdg.apps.googleusercontent.com
+  twitterConsumerKey: 8JssO2TP6DPUvsMxIiuBA
+  twitterConsumerSecret: t20smaekjNGQONWvN63joVQQ3xZmoGmbnjeunFjI
+  googleClientId: 80598588743-5a45rsdlejpqrs1g71nlfkle1edg729c.apps.googleusercontent.com
   googleClientSecretId: 
   inAppApiKey: K-A174260-U00000-E1ZSTS-A95DE87202F4C94B
   paymentState: game_state

@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/F:/Program/Xampp/htdocs/appota_game_test/Model/connect_db.php</file>
+            <file>file:/F:/Program/Xampp/htdocs/appota_game_test/Model/package_model.php</file>
+            <file>file:/F:/Program/Xampp/htdocs/appota_game_test/Model/server_model.php</file>
+            <file>file:/F:/Program/Xampp/htdocs/appota_game_test/Model/transaction_model.php</file>
             <file>file:/F:/Program/Xampp/htdocs/appota_game_test/ipn.php</file>
+            <file>file:/F:/Program/Xampp/htdocs/appota_game_test/Model/user_model.php</file>
+            <file>file:/F:/Program/Xampp/htdocs/appota_game_test/common.php</file>
             <file>file:/F:/Program/Xampp/htdocs/appota_game_test/login_game.php</file>
-            <file>file:/F:/Program/Xampp/htdocs/appota_game_test/ipn_test.php</file>
         </group>
     </open-files>
 </project-private>

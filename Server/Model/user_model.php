@@ -15,12 +15,12 @@ function get_game_user_model($appota_user_id, $appota_user_name, $server_id){
             "gold" => $user_info[6], 
             "diamond" => $user_info[7],                                
             "is_vip" => $user_info[8],                                                                  
-            "error_code" => 0
+            "error_code" => "0"
         );
     }
     else { 
         $result = array(
-            "error_code" => 1,
+            "error_code" => "1",
             "message" => 'Creat new user'
         );             
     }
@@ -34,7 +34,7 @@ function create_game_user_model($game_user_name, $appota_user_id, $appota_user_n
       $result = array();
       if(!$data) {
           $result = array(
-              "error_code" => 1
+              "error_code" => "1"
           );
       }
       else {
@@ -50,12 +50,12 @@ function update_game_user($diamond, $game_user_id){
     $result = array();
     if(!$data) {
           $result = array(
-              "error_code" => 1
+              "error_code" => "1"
           );
       }
       else {
           $result = array(
-              "error_code" => 0
+              "error_code" => "0"
           );
       }
 }

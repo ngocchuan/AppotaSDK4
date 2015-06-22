@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 
 define('CLIENT_KEY', '668a3fa96a86942252b31221a93b6898055794d20');
 define('API_KEY', 'K-A174260-U00000-E1ZSTS-A95DE87202F4C94B');
@@ -21,7 +22,7 @@ function appota_payment($fields) {
         $target             = $fields['target'];
         $country_code       = $fields['country_code'];
         $hash               = $fields['hash'];
-        
+        $result = array();
         // check transaction status
         if ( $status != 1) {
             $result = array(
@@ -30,7 +31,7 @@ function appota_payment($fields) {
             );
             // LOG
             file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
-            return $result;
+            return json_encode($result);
         }
         
         switch($trans_type){
@@ -62,7 +63,6 @@ function appota_payment($fields) {
                                 $trans_type . CLIENT_SECRET );
                 break;
         }
-        $result = array();
         // check hash                    
         if ( $check_hash != $hash ){
             $result = array(
@@ -71,7 +71,7 @@ function appota_payment($fields) {
             );
             // LOG
             file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
-            return $result;
+            return json_encode($result);
         }
                         
         // If hash is ok, verify transaciton
@@ -82,24 +82,24 @@ function appota_payment($fields) {
             );
             // LOG
             file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
-            return $result;
+            return json_encode($result);
         }         
         // Check exist transaction
         $tracking_result = get_transaction($trans_id);
-        if ($tracking_result['error_code'] == 0) {
+        if ($tracking_result['error_code'] == "0") {
             $result = array(
                 "error_code" => "4",
                 "message" => "Exist transaction"
             );
             // LOG
             file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
-            return $result;
+            return json_encode($result);
         }
         // If function is verified proceed gold increment based on "amount", "state"   
         $result = increase_resource_user($trans_id, $trans_type, $amount, $target, $state);
         // LOG
         file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
-        return $result;
+        return json_encode($result);
 }
 
 // Verify transaction_id, amount, state, target with Appota Confirm API
@@ -117,14 +117,14 @@ function verify_appota_transaction($transaction_id, $amount, $state, $target) {
 function increase_resource_user($transaction_id, $transaction_type, $amount, $target, $state){
     // Get info package
     $package_info = get_package($transaction_type, $amount);
-    if($package_info['error_code'] == 1){
+    if($package_info['error_code'] == "1"){
         $result = array(
             "error_code" => "5",
             "message" => "Not has package"
         );
         // LOG
         file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
-        return $result;
+        return json_encode($result);
     }
     // Get user info
     $tmp = explode('|', $target);
@@ -132,14 +132,14 @@ function increase_resource_user($transaction_id, $transaction_type, $amount, $ta
     $appota_uset_name = explode(':', $tmp[0])[1];
     $server_id = explode("_", $state)[0];
     $user_info = get_game_user_model($appota_uset_id, $appota_uset_name, $server_id);
-    if($user_info['error_code'] == 1){
+    if($user_info['error_code'] == "1"){
         $result = array(
             "error_code" => "6",
             "message" => "Not has user"
         );
         // LOG
         file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
-        return $result;
+        return json_encode($result);
     }
     // Update user
     $user_info['diamond'] += $amount/$package_info['exchange_rate'];
@@ -152,7 +152,7 @@ function increase_resource_user($transaction_id, $transaction_type, $amount, $ta
 }
 
 if (isset($_POST["transaction_id"])){
-    die(json_encode(appota_payment($_POST)));
+    die(appota_payment($_POST));
 }
 
 ?>
