@@ -1,9 +1,9 @@
 <?php
 header('Content-Type: application/json');
 
-define('CLIENT_KEY', '668a3fa96a86942252b31221a93b6898055794d20');
-define('API_KEY', 'K-A174260-U00000-E1ZSTS-A95DE87202F4C94B');
-define('CLIENT_SECRET', '2dd6162d8e9ec966af62e66bb247302f055794d20');
+define('CLIENT_KEY', 'bf1600973f1d552c640df2380e454d690558a1843');
+define('API_KEY', 'K-A174848-U00000-NBEBGP-8BFDB9C12280DA67');
+define('CLIENT_SECRET', '8b9c85c81b993831efcf9771f44d82360558a1843');
 
 include 'common.php';
 include 'Model/connect_db.php';
@@ -18,6 +18,7 @@ function appota_payment($fields) {
         $trans_type         = $fields['transaction_type'];
         $amount             = $fields['amount'];
         $currency           = $fields['currency'];
+        $revenue            = $fields['revenue'];
         $state              = $fields['state'];
         $target             = $fields['target'];
         $country_code       = $fields['country_code'];
@@ -30,7 +31,7 @@ function appota_payment($fields) {
                     "message" => "Transaction fail"
             );
             // LOG
-            file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
+            file_put_contents('/var/tmp/r.txt', json_encode($fields)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
             return json_encode($result);
         }
         
@@ -40,7 +41,7 @@ function appota_payment($fields) {
                 $card_serial        = $fields['card_serial'];
                 $card_vendor        = $fields['card_vendor'];
                 $check_hash = md5( $amount . $card_code . $card_serial . $card_vendor . $country_code .
-                                $currency . $sandbox . $state . $status . $target . $trans_id.
+                                $currency . $revenue. $sandbox . $state . $status . $target . $trans_id.
                                 $trans_type . CLIENT_SECRET );
                 break;
             case 'SMS':
@@ -48,18 +49,18 @@ function appota_payment($fields) {
                 $message            = $fields['message'];
                 $code               = $fields['code'];     
                 $check_hash = md5( $amount . $code . $country_code .
-                                $currency . $message . $phone . $sandbox . $state . $status . $target . $trans_id.
+                                $currency . $revenue. $message . $phone . $sandbox . $state . $status . $target . $trans_id.
                                 $trans_type . CLIENT_SECRET );
                 break;
             case 'APPLE_ITUNES':
                 $productid              = $fields['productid'];    
                 $check_hash = md5( $amount . $code . $country_code .
-                                $currency . $productid . $message . $phone . $sandbox . $state . $status . $target . $trans_id.
+                                $currency . $revenue. $productid . $message . $phone . $sandbox . $state . $status . $target . $trans_id.
                                 $trans_type . CLIENT_SECRET );
                 break;
             default :
                 $check_hash = md5( $amount . $country_code .
-                                $currency . $sandbox . $state . $status . $target . $trans_id.
+                                $currency . $revenue. $sandbox . $state . $status . $target . $trans_id.
                                 $trans_type . CLIENT_SECRET );
                 break;
         }
@@ -70,7 +71,7 @@ function appota_payment($fields) {
                 "message" => "Check hash fail"
             );
             // LOG
-            file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
+            file_put_contents('/var/tmp/r.txt', json_encode($fields)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND); 
             return json_encode($result);
         }
                         
@@ -81,7 +82,7 @@ function appota_payment($fields) {
                 "message" => "Verify transaction fail"
             );
             // LOG
-            file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
+            file_put_contents('/var/tmp/r.txt', json_encode($fields)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
             return json_encode($result);
         }         
         // Check exist transaction
@@ -92,14 +93,11 @@ function appota_payment($fields) {
                 "message" => "Exist transaction"
             );
             // LOG
-            file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
+            file_put_contents('/var/tmp/r.txt', json_encode($fields)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
             return json_encode($result);
         }
         // If function is verified proceed gold increment based on "amount", "state"   
-        $result = increase_resource_user($trans_id, $trans_type, $amount, $target, $state);
-        // LOG
-        file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
-        return json_encode($result);
+        increase_resource_user($trans_id, $trans_type, $amount, $target, $state);
 }
 
 // Verify transaction_id, amount, state, target with Appota Confirm API
@@ -123,7 +121,7 @@ function increase_resource_user($transaction_id, $transaction_type, $amount, $ta
             "message" => "Not has package"
         );
         // LOG
-        file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
+        file_put_contents('/var/tmp/r.txt', json_encode($fields)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
         return json_encode($result);
     }
     // Get user info
@@ -138,7 +136,7 @@ function increase_resource_user($transaction_id, $transaction_type, $amount, $ta
             "message" => "Not has user"
         );
         // LOG
-        file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
+        file_put_contents('/var/tmp/r.txt', json_encode($fields)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
         return json_encode($result);
     }
     // Update user
@@ -146,9 +144,13 @@ function increase_resource_user($transaction_id, $transaction_type, $amount, $ta
     $update_user = update_game_user($user_info['diamond'], $user_info['game_user_id']);
     // Insert transaction tracking
     $transaction_tracking = insert_transaction_tracking($transaction_id, $user_info['game_user_id'], $server_id, $package_info['package_id']);
+    $result = array(
+        "error_code" => "0",
+        "message" => "Success!"
+    );
     // LOG
-    file_put_contents('log.txt', $fields.": ".json_encode($result).PHP_EOL, FILE_APPEND);
-    return $user_info;
+    file_put_contents('/var/tmp/r.txt', json_encode($fields)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
+    return json_encode($result);
 }
 
 if (isset($_POST["transaction_id"])){

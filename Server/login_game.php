@@ -9,7 +9,7 @@ include 'common.php';
 function get_list_server(){
     $result = get_list_server_model();
     // LOG
-    file_put_contents('log.txt', json_encode($result).PHP_EOL, FILE_APPEND);
+    file_put_contents('/var/tmp/r.txt', json_encode($result).PHP_EOL, FILE_APPEND);
     return json_encode($result);
 }
 
@@ -27,7 +27,7 @@ function get_game_user($appota_access_token, $appota_user_id, $appota_user_name,
         $result = get_game_user_model($appota_user_id, $appota_user_name, $server_id);
     }
     // LOG
-    file_put_contents('log.txt', json_encode($result).PHP_EOL, FILE_APPEND);
+    file_put_contents('/var/tmp/r.txt', json_encode($result).PHP_EOL, FILE_APPEND);
     
     return json_encode($result);
 }
@@ -42,7 +42,7 @@ function create_game_user($appota_access_token, $game_user_name, $appota_user_id
             "message" => "Params null"
         );
         // LOG
-        file_put_contents('log.txt', json_encode($result).PHP_EOL, FILE_APPEND);
+        file_put_contents('/var/tmp/r.txt', json_encode($result).PHP_EOL, FILE_APPEND);
         return json_encode($result);
     }
     // Check exist user
@@ -53,7 +53,7 @@ function create_game_user($appota_access_token, $game_user_name, $appota_user_id
             "message" => "User exist"
         );
         // LOG
-        file_put_contents('log.txt', json_encode($result).PHP_EOL, FILE_APPEND);
+        file_put_contents('/var/tmp/r.txt', json_encode($result).PHP_EOL, FILE_APPEND);
         return json_encode($result);
     }
     // Check invalid
@@ -63,7 +63,7 @@ function create_game_user($appota_access_token, $game_user_name, $appota_user_id
             "message" => "Invalid Appota User"
         );
         // LOG
-        file_put_contents('log.txt', json_encode($result).PHP_EOL, FILE_APPEND);
+        file_put_contents('/var/tmp/r.txt', json_encode($result).PHP_EOL, FILE_APPEND);
         return json_encode($result);
     }
     // Check server id
@@ -74,13 +74,13 @@ function create_game_user($appota_access_token, $game_user_name, $appota_user_id
             "message" => "This server is not exist"
         );
         // LOG
-        file_put_contents('log.txt', json_encode($result).PHP_EOL, FILE_APPEND);
+        file_put_contents('/var/tmp/r.txt', json_encode($result).PHP_EOL, FILE_APPEND);
         return json_encode($result);
     }
     
     $result = create_game_user_model($game_user_name, $appota_user_id, $appota_user_name, $server_id);
     // LOG
-    file_put_contents('log.txt', json_encode($result).PHP_EOL, FILE_APPEND);
+    file_put_contents('/var/tmp/r.txt', json_encode($result).PHP_EOL, FILE_APPEND);
     return json_encode($result);
 }
 

@@ -1,1 +1,0 @@
-[{"server_id":"1","server_name":"Huyen Vu"},{"server_id":"2","server_name":"Chu Tuoc"}]
