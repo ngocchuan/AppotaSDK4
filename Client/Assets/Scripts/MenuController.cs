@@ -7,6 +7,7 @@ public class MenuController : MonoBehaviour {
 	public GameObject panelCreatUser;
 
 	private GetDataServer dataServer;
+    private bool isGetListServer;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,7 @@ public class MenuController : MonoBehaviour {
 	}
 
 	void Init(){
+        isGetListServer = false;
 		panelServer.SetActive (false);
 		panelCreatUser.SetActive (false);
 	}
@@ -43,18 +45,18 @@ public class MenuController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Escape)) 
 			Application.Quit(); 
 
-		if (Setting.isLogin) {
-			Setting.isLogin = false;
+		if (Setting.isLogin &&  !isGetListServer) {
 			dataServer.GetListServer ();
+            isGetListServer = true;
 		}
+        // Hide SDK Button
+        AppotaSDKHandler.Instance.SetSDKButtonVisibility(false);
 	}
     void OnGUI()
     {
-
         GUIStyle customButton = new GUIStyle("button");
         customButton.fontSize = 30;
-
-        if (GUI.Button(new Rect(Screen.width / 3, Screen.height - 100, Screen.width / 3, Screen.height / 10), "Login", customButton))
+        if (!Setting.isLogin && GUI.Button(new Rect(Screen.width / 3, Screen.height - 100, Screen.width / 3, Screen.height / 10), "Login", customButton))
         {
             AppotaSDKHandler.Instance.ShowLoginView();
         }
