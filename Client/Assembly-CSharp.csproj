@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{F097B268-D37A-E9BD-6B67-D454B4C1CCC0}</ProjectGuid>
+	<ProjectGuid>{21B9BB3A-C7A2-E7FF-085B-6B8CB30A782D}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -54,6 +54,7 @@
      <Compile Include="Assets\Appota\Others\AppotaFBEventParameter.cs" />
      <Compile Include="Assets\Appota\Others\AppotaPaymentResult.cs" />
      <Compile Include="Assets\Appota\Others\AppotaSession.cs" />
+     <Compile Include="Assets\Appota\Others\AppotaThreadHandler.cs" />
      <Compile Include="Assets\Appota\Others\MainXAMLMod.cs" />
      <Compile Include="Assets\Appota\Others\ManifestMod.cs" />
      <Compile Include="Assets\Appota\Others\PlistMod.cs" />

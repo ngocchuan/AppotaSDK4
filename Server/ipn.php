@@ -1,9 +1,9 @@
 <?php
 header('Content-Type: application/json');
 
-define('CLIENT_KEY', 'bf1600973f1d552c640df2380e454d690558a1843');
-define('API_KEY', 'K-A174848-U00000-NBEBGP-8BFDB9C12280DA67');
-define('CLIENT_SECRET', '8b9c85c81b993831efcf9771f44d82360558a1843');
+define('CLIENT_KEY', '0ea800d77944a1873500c325dd62e47005593a7f5');
+define('API_KEY', 'K-A175238-U00000-VEANCR-EA9C9F2DC28EE857');
+define('CLIENT_SECRET', 'acc76ac2a855ebb050b8cb23d74a9e0205593a7f5');
 
 include 'common.php';
 include 'Model/connect_db.php';
@@ -121,7 +121,7 @@ function increase_resource_user($transaction_id, $transaction_type, $amount, $ta
             "message" => "Not has package"
         );
         // LOG
-        file_put_contents('/var/tmp/r.txt', json_encode($fields)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
+        file_put_contents('/var/tmp/r.txt', json_encode($_POST)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
         return json_encode($result);
     }
     // Get user info
@@ -136,7 +136,7 @@ function increase_resource_user($transaction_id, $transaction_type, $amount, $ta
             "message" => "Not has user"
         );
         // LOG
-        file_put_contents('/var/tmp/r.txt', json_encode($fields)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
+        file_put_contents('/var/tmp/r.txt', json_encode($_POST)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
         return json_encode($result);
     }
     // Update user
@@ -149,7 +149,7 @@ function increase_resource_user($transaction_id, $transaction_type, $amount, $ta
         "message" => "Success!"
     );
     // LOG
-    file_put_contents('/var/tmp/r.txt', json_encode($fields)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
+    file_put_contents('/var/tmp/r.txt', json_encode($_POST)." kq : ".json_encode($result).PHP_EOL, FILE_APPEND);
     return json_encode($result);
 }
 

@@ -17,6 +17,7 @@ public class MenuController : MonoBehaviour {
 			// Init
 			Init ();
 		} else {
+			AppotaSDKHandler.Instance.SetSDKButtonVisibility(false);
 			panelServer.SetActive (true);
 		}
 		// Set dataServer
@@ -38,6 +39,7 @@ public class MenuController : MonoBehaviour {
 		#if UNITY_ANDROID
 		AppotaSDKHandler.Instance.Init();
 		AppotaSDKHandler.Instance.SetAutoShowLoginDialog(false);
+		AppotaSDKHandler.Instance.SetSDKButtonVisibility(false);
 		#endif
 	}
 	
@@ -50,7 +52,7 @@ public class MenuController : MonoBehaviour {
             isGetListServer = true;
 		}
         // Hide SDK Button
-        AppotaSDKHandler.Instance.SetSDKButtonVisibility(false);
+        //AppotaSDKHandler.Instance.SetSDKButtonVisibility(false);
 	}
     void OnGUI()
     {
